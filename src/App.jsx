@@ -1,4 +1,5 @@
 import React from 'react'
+import Login from './components/Login'
 
 
 
@@ -6,7 +7,7 @@ const App = () => {
   
   return (
     <div>
-      hi
+      <Login/>
     </div>
   )
 }
