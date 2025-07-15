@@ -1,15 +1,11 @@
 import React from 'react'
 
-
-
-const App = () => {
-  
+const Button = () => {
   return (
     <div>
-      hi
+      
     </div>
   )
 }
 
-export default App
-
+export default Button
