@@ -1,5 +1,7 @@
 @import "tailwindcss";
-
+ body {
+      font-family: "WF Visual Sans", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Oxygen-Sans", Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    }
 .bg-custom-oklch {
     background-color: oklch(0.596 0.145 163.225);
 }

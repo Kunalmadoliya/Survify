@@ -64,8 +64,8 @@ const Signup = ({onToggle}) => {
               <h1 className="text-xl font-semibold">Choose Account Type</h1>
             </div>
             <div>
-              <button onClick={() => setValue("customer")}>Customer</button>
-              <button onClick={() => setValue("Provider")}>Provider</button>
+              <button className="" onClick={() => setValue("customer")}>Customer</button>
+              <button className="" onClick={() => setValue("Provider")}>Provider</button>
             </div>
             <div>
               <div className="space-y-5 pt-4">

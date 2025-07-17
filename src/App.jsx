@@ -1,13 +1,12 @@
-import React from "react";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Authentication from "./components/Authentication";
+import {Header} from "./components/index";
+import Mainroutes from "./routes/Mainroutes";
 
 const App = () => {
   return (
-    <div>
-      <Authentication />
-    </div>
+    <>
+       <Header/>
+      <Mainroutes />
+    </>
   );
 };
 
