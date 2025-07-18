@@ -4,13 +4,9 @@ import Footer from "./Footer/Footer";
 import Input from "./Input";
 import Button from "./Button";
 import Logo from "./Logo";
-import Home from "../pages/Home";
-import About from "../sections/About";
-import Service from "../sections/Service";
 import Login from "./Login";
 import Signup from "./Signup";
-import Authentication from "./Authentication"
-
+import Authentication from "./Authentication";
 
 export {
   Header,
@@ -19,10 +15,7 @@ export {
   Input,
   Button,
   Logo,
-  Home,
-  About,
-  Service,
   Login,
   Signup,
-  Authentication
+  Authentication,
 };

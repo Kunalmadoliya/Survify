@@ -1,6 +1,7 @@
 import {useSelector} from "react-redux";
 import {Logo} from "../index";
 import {Link} from "react-router-dom";
+import {Container} from "../../components/index";
 const Header = () => {
   const user = useSelector((state) => state.authSlice);
 
@@ -35,47 +36,49 @@ const Header = () => {
 
   return (
     <>
-      <header>
-        <nav>
-          <div className="p-7 flex justify-between items-center border text-black">
-            <div>
-              <Logo />
+      <Container>
+        <header>
+          <nav>
+            <div className="p-7 flex justify-between items-center border text-black">
+              <div>
+                <Logo />
+              </div>
+
+              <ul className="flex gap-6 items-center">
+                {navItems.map(
+                  (item, i) =>
+                    item.active &&
+                    (item.name === "Home" ||
+                      item.name === "Service" ||
+                      item.name === "About") && (
+                      <li
+                        key={i}
+                        className="text-black hover:underline cursor-pointer"
+                      >
+                        <Link to={item.slug}>{item.name}</Link>
+                      </li>
+                    )
+                )}
+              </ul>
+
+              <ul className="flex gap-4 items-center">
+                {navItems.map(
+                  (item, i) =>
+                    item.active &&
+                    (item.name === "Login" || item.name === "Sign Up") && (
+                      <li
+                        key={i}
+                        className="text-black hover:underline cursor-pointer"
+                      >
+                        <Link to={item.slug}>{item.name}</Link>
+                      </li>
+                    )
+                )}
+              </ul>
             </div>
-
-            <ul className="flex gap-6 items-center">
-              {navItems.map(
-                (item, i) =>
-                  item.active &&
-                  (item.name === "Home" ||
-                    item.name === "Service" ||
-                    item.name === "About") && (
-                    <li
-                      key={i}
-                      className="text-black hover:underline cursor-pointer"
-                    >
-                      <Link to={item.slug}>{item.name}</Link>
-                    </li>
-                  )
-              )}
-            </ul>
-
-            <ul className="flex gap-4 items-center">
-              {navItems.map(
-                (item, i) =>
-                  item.active &&
-                  (item.name === "Login" || item.name === "Sign Up") && (
-                    <li
-                      key={i}
-                      className="text-black hover:underline cursor-pointer"
-                    >
-                      <Link to={item.slug}>{item.name}</Link>
-                    </li>
-                  )
-              )}
-            </ul>
-          </div>
-        </nav>
-      </header>
+          </nav>
+        </header>
+      </Container>
     </>
   );
 };
