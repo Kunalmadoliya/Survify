@@ -1,6 +1,5 @@
 import conf from "../../conf/conf";
-
-import {Client, ID, Databases, Storage, Query} from "appwrite";
+import { Client, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service {
   client = new Client();
@@ -16,12 +15,12 @@ export class Service {
     this.bucket = new Storage(this.client);
   }
 
-  //All Providers can do this
-  async createPost({title, content, status, slug, featuredImage, price}) {
+  // 🔹 Providers can create a service (occupation)
+  async createOccupation({ title, content, status, slug, featuredImage, price }) {
     try {
-      await this.databases.createDocument(
+      return await this.databases.createDocument(
         conf.appwriteDatabaseId,
-        conf.appwriteProfileCollectionId,
+        conf.appwriteOccupationCollectionId,
         slug,
         {
           title,
@@ -36,11 +35,11 @@ export class Service {
     }
   }
 
-  async updatePost({title, slug, content, price, featuredImage}) {
+  async updateOccupation({ title, slug, content, price, featuredImage }) {
     try {
       return await this.databases.updateDocument(
         conf.appwriteDatabaseId,
-        conf.appwriteProfileCollectionId,
+        conf.appwriteOccupationCollectionId,
         slug,
         {
           title,
@@ -54,11 +53,11 @@ export class Service {
     }
   }
 
-  async deletePost({slug}) {
+  async deleteOccupation({ slug }) {
     try {
       return await this.databases.deleteDocument(
         conf.appwriteDatabaseId,
-        conf.appwriteProfileCollectionId,
+        conf.appwriteOccupationCollectionId,
         slug
       );
     } catch (error) {
@@ -66,12 +65,12 @@ export class Service {
     }
   }
 
-  //all client/user/guest can do this
-  async getPost(slug) {
+  // 🔹 Clients/Users can fetch occupations (services)
+  async getOccupation(slug) {
     try {
       return await this.databases.getDocument(
         conf.appwriteDatabaseId,
-        conf.appwriteProfileCollectionId,
+        conf.appwriteOccupationCollectionId,
         slug
       );
     } catch (error) {
@@ -79,7 +78,7 @@ export class Service {
     }
   }
 
-  async getPosts(query = [Query.equal("status", "active")]) {
+  async getOccupations(query = [Query.equal("status", "active")]) {
     try {
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
@@ -91,3 +90,6 @@ export class Service {
     }
   }
 }
+
+const service = new Service();
+export default service;

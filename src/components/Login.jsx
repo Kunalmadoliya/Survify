@@ -35,7 +35,7 @@ const Login = ({ onToggle }) => {
   return (
     <form
       onSubmit={handleSubmit(login)}
-      className="bg-gray-800 border border-white/10 p-6 sm:p-8 rounded-md space-y-5"
+      className="bg-gray-800 border border-white/10 p-12 sm:p-10 rounded-md space-y-5"
     >
       <div className="flex border border-white/10 rounded-md overflow-hidden">
         <button

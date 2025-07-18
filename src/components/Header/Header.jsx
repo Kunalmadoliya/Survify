@@ -37,7 +37,7 @@ const Header = () => {
     <>
       <header>
         <nav>
-          <div className="p-10 flex justify-between items-center border text-black">
+          <div className="p-7 flex justify-between items-center border text-black">
             <div>
               <Logo />
             </div>

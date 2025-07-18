@@ -1,13 +1,12 @@
-import {Header} from "./components/index";
-import Mainroutes from "./routes/Mainroutes";
+import HeroIntro from "./pages/HeroIntro"
+
 
 const App = () => {
   return (
     <>
-       <Header/>
-      <Mainroutes />
+     <HeroIntro/>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App
