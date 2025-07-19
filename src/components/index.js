@@ -7,6 +7,8 @@ import Logo from "./Logo";
 import Login from "./Login";
 import Signup from "./Signup";
 import Authentication from "./Authentication";
+import Hoverbutton from "./Animations/Hoverbutton";
+import Homecards from "./Animations/Homecards";
 
 export {
   Header,
@@ -18,4 +20,6 @@ export {
   Login,
   Signup,
   Authentication,
+  Hoverbutton,
+  Homecards
 };

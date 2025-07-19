@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {motion} from "framer-motion";
-import {Header, Container} from "../components/index";
+import {Header, Container, Hoverbutton ,  Homecards} from "../components/index";
 import Text from "../components/Animations/Text";
 
 const Hero = () => {
@@ -24,16 +24,16 @@ const Hero = () => {
               <input
                 type="text"
                 placeholder="Find Services...."
-                className="w-110 px-4 py-9 text-2xl  border border-gray-300 focus:outline-none focus:ring-0"
+                className="w-100 px-4 py-9 text-2xl  border border-gray-300 focus:outline-none focus:ring-0"
               />
-              <button className="w-30 px-4 py-9 bg-blue-600 text-white  hover:bg-green-600  focus:outline-none focus:ring-0 text-2xl">
-                Go
-              </button>
+             <Hoverbutton className="h-26 text-3xl">
+              Go
+             </Hoverbutton>
             </div>
           </div>
 
-          <div className="border relative w-3/4 h-3/4 flex items-center justify-center">
-            <p className="text-xl">Right Side</p>
+          <div className="border w-3/4 h-3/4 flex items-center justify-center z-0">
+           <Homecards/>
           </div>
         </div>
       </Container>
