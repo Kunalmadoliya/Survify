@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "./actions/authSlice";
-import bookingReducer from "./actions/bookingSlice";
-import occupationSlice from "./actions/occupationSlice";
+import authReducer from "./actions/authSlice.js";
+import bookingReducer from "./actions/bookingSlice.js";
+import occupationReducer from "./actions/occupationSlice.js";
 
 const store = configureStore({
   reducer: {
-    auth: authSlice,
+    auth: authReducer,
     bookings: bookingReducer,
-    occupations: occupationSlice,
+    occupations: occupationReducer,
   },
 });
 
