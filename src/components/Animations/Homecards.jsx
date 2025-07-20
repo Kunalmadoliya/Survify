@@ -37,7 +37,7 @@ const Homecards = ({ className = "" }) => {
       {services.map((service, index) => (
         <motion.div
           key={index}
-          className="relative rounded-3xl overflow-hidden cursor-pointer flex-shrink-0 transition-all duration-500 ease-in-out"
+          className="relative rounded-3xl overflow-hidden cursor-pointer flex-shrink-0 transition-all duration-300 ease-in-out"
           variants={cardVariants}
           animate={hoveredIndex === index ? "open" : "close"}
           initial="close"

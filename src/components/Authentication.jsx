@@ -10,7 +10,7 @@ const Authentication = () => {
     <Container>
       <div className="min-h-screen flex flex-col">
         {/* Top bar */}
-        <div className="flex items-center p-6 justify-between border">
+        <div className="flex items-center p-6 justify-between ">
           <p
             onClick={() => navigate("/")}
             className="text-[1.1rem] hover:cursor-pointer"
@@ -22,14 +22,14 @@ const Authentication = () => {
 
         {/* Content area */}
         <div className="flex-grow flex items-center justify-center px-4">
-          <div className="w-full max-w-md space-y-5 text-center">
+          <div className="w-full max-w-md space-y-2 text-center">
             <h1 className="text-3xl sm:text-4xl font-bold text-black">
               Welcome to{" "}
               <span className="hover:bg-blue-300 hover:text-black transition px-1">
                 HomeServify
               </span>
             </h1>
-            <p className="text-black text-base sm:text-lg">
+            <p className="text-gray-500 text-base sm:text-md">
               Join thousands of satisfied clients and trusted professionals
             </p>
 

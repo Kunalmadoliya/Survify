@@ -1,11 +1,12 @@
 import React, {useState, useRef} from "react";
 import Stepper from "awesome-react-stepper";
-import {Input, Button, Hoverbutton} from "./index";
+import {Input, Button} from "./index";
 import authService from "../appwrite/auth";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {login} from "../store/actions/authSlice";
+import {Hoverbutton} from "../components/index";
 
 const Signup = ({onToggle}) => {
   const navigate = useNavigate();
@@ -13,6 +14,18 @@ const Signup = ({onToggle}) => {
   const stepperRef = useRef(null);
   const [error, setError] = useState("");
   const [selectedRole, setSelectedRole] = useState("");
+  const [selectedService, setSelectedService] = useState("");
+
+  const jobs = [
+    "House Cleaning",
+    "Plumbing",
+    "Salon at Home",
+    "Painting",
+    "AC Repair & Service",
+    "Electrical Work",
+    "Appliance Repair",
+    "Carpentry",
+  ];
 
   const {
     register,
@@ -20,16 +33,13 @@ const Signup = ({onToggle}) => {
     formState: {errors},
     setValue,
     trigger,
+    watch,
   } = useForm();
 
   const handleNext = async () => {
-    const isValid = await trigger(["email", "password", "selectedRole"]);
-    if (!selectedRole) {
-      return;
-    }
-    if (isValid) {
-      stepperRef.current.nextStep();
-    }
+    const isValid = await trigger(["fullName", "email"]);
+    if (!selectedRole) return;
+    if (isValid) stepperRef.current.nextStep();
   };
 
   const create = async (data) => {
@@ -50,39 +60,67 @@ const Signup = ({onToggle}) => {
   return (
     <form
       onSubmit={handleSubmit(create)}
-      className="border p-10 sm:p-10 rounded-lg space-y-8"
+      className="border p-10 rounded-lg space-y-8"
     >
-      {/* Toggle Buttons */}
       <div className="flex border rounded-md overflow-hidden">
         <button
           type="button"
           onClick={onToggle}
-          className="flex w-1/2 justify-center font-semibold p-2 text-black hover:bg-blue-00 transition"
+          className="flex w-1/2 border justify-center font-semibold p-2 text-black hover:bg-blue-100 transition"
         >
           Login
         </button>
         <button
           type="button"
-          className="flex w-1/2 justify-center font-semibold p-2 text-black hover:bg-green-300 transition"
+          className="flex w-1/2 border justify-center font-semibold p-2 text-black hover:bg-green-300 transition"
         >
           Sign up
         </button>
       </div>
 
       <Stepper
-        
+        ref={stepperRef}
+        strokeColor="#17253975"
+        fillStroke="#172539"
+        activeColor="#172539"
+        activeProgressBorder="2px solid #17253975"
+        continueBtn={
+          <Hoverbutton
+            type="button"
+            className="stepperBtn rounded-md"
+            onClick={handleNext}
+          >
+            Next
+          </Hoverbutton>
+        }
+        backBtn={
+          <Hoverbutton
+            type="button"
+            className="stepperBtn rounded-md"
+            onClick={() => stepperRef.current.previousStep()}
+          >
+            Back
+          </Hoverbutton>
+        }
+        submitBtn={
+          <Hoverbutton type="submit" className="stepperBtn rounded-md">
+            Sign Up
+          </Hoverbutton>
+        }
       >
-        {/* Step 1: Role + Email + Password */}
+        {/* Step 1: Role + Basic Info */}
         <div className="space-y-6">
           <h1 className="text-2xl font-semibold mt-3 text-black">
             Choose Account Type
           </h1>
 
-          <div className="mt-5   grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 gap-5">
             <button
               type="button"
-              className={`border text-center p-5 hover:bg-blue-500 text-black rounded-md transition ${
-                selectedRole === "client" ? "bg-blue-100" : ""
+              className={`border text-center p-5 text-black rounded-md transition ${
+                selectedRole === "client"
+                  ? "bg-[hsl(274.87deg_95.9%_52.16%)] text-white"
+                  : ""
               }`}
               onClick={() => setSelectedRole("client")}
             >
@@ -93,8 +131,8 @@ const Signup = ({onToggle}) => {
             </button>
             <button
               type="button"
-              className={`border text-center p-5 hover:bg-green-300 text-black rounded-md transition ${
-                selectedRole === "provider" ? "bg-green-100" : ""
+              className={`border text-center p-5 text-black rounded-md transition ${
+                selectedRole === "provider" ? "bg-[#009966] text-white" : ""
               }`}
               onClick={() => setSelectedRole("provider")}
             >
@@ -105,61 +143,113 @@ const Signup = ({onToggle}) => {
             </button>
           </div>
 
-          <div className="space-y-5 ">
-            <Input
-              icon={<i className="ri-mail-line text-black text-xl"></i>}
-              type="email"
-              placeholder="Enter your Email"
-              {...register("email", {
-                required: "Email is required",
-                validate: {
-                  matchPattern: (value) =>
-                    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                    "Invalid email",
-                },
-              })}
-            />
-            {errors.email && (
-              <p className="text-red-600 text-sm">{errors.email.message}</p>
-            )}
+          <Input
+            icon={<i className="ri-user-line text-black text-xl"></i>}
+            type="text"
+            placeholder="Full Name"
+            {...register("fullName", {required: "Full name is required"})}
+          />
+          {errors.fullName && (
+            <p className="text-red-600 text-sm">{errors.fullName.message}</p>
+          )}
 
-            <Input
-              icon={<i className="ri-lock-2-line text-black text-xl"></i>}
-              type="password"
-              placeholder="Enter your Password"
-              {...register("password", {required: "Password is required"})}
-            />
-            {errors.password && (
-              <p className="text-red-600 text-sm">{errors.password.message}</p>
-            )}
-
-            {error && <p className="text-red-600 text-sm">{error}</p>}
-
-          </div>
+          <Input
+            icon={<i className="ri-mail-line text-black text-xl"></i>}
+            type="email"
+            placeholder="Email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                message: "Invalid email",
+              },
+            })}
+          />
+          {errors.email && (
+            <p className="text-red-600 text-sm">{errors.email.message}</p>
+          )}
         </div>
 
-        {/* Step 2: Customer info */}
-        <div>
+        {/* Step 2: Role-based Inputs */}
+        <div className="space-y-5 mt-5">
+          {/* Passwords (for both roles) */}
+          <Input
+            icon={<i className="ri-lock-2-line text-black text-xl"></i>}
+            type="password"
+            placeholder="Password"
+            {...register("password", {required: "Password is required"})}
+          />
+          {errors.password && (
+            <p className="text-red-600 text-sm">{errors.password.message}</p>
+          )}
+
+          <Input
+            icon={<i className="ri-lock-password-line text-black text-xl"></i>}
+            type="password"
+            placeholder="Confirm Password"
+            {...register("confirmPassword", {
+              required: "Confirm password is required",
+              validate: (value) =>
+                value === watch("password") || "Passwords do not match",
+            })}
+          />
+          {errors.confirmPassword && (
+            <p className="text-red-600 text-sm">
+              {errors.confirmPassword.message}
+            </p>
+          )}
+
+          {/* Client-Specific Input */}
           {selectedRole === "client" && (
-            <div className="space-y  mt-5">
+            <Input
+              icon={<i className="ri-phone-line text-black text-xl"></i>}
+              type="text"
+              placeholder="Phone Number (optional)"
+              {...register("phone")}
+            />
+          )}
+
+          {/* Provider-Specific Inputs */}
+          {selectedRole === "provider" && (
+            <>
+              <div>
+                <p className="text-black font-medium mb-2">Service Category</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {jobs.map((item, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => setSelectedService(item)}
+                      className={`border p-2 rounded-md text-sm ${
+                        selectedService === item
+                          ? "bg-blue-600 text-white"
+                          : "text-black"
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <Input
-                icon={<i className="ri-user-line"></i>}
-                placeholder="Full Name"
+                className="mt-5 flex "
+                icon={
+                  <i className="ri-briefcase-3-line text-black text-xl"></i>
+                }
                 type="text"
-                {...register("fullName", {
-                  required: "Full name is required",
+                placeholder="Years of Experience"
+                {...register("experience", {
+                  required: "Experience is required",
                 })}
               />
-              {errors.fullName && (
+              {errors.experience && (
                 <p className="text-red-600 text-sm">
-                  {errors.fullName.message}
+                  {errors.experience.message}
                 </p>
               )}
-            </div>
+            </>
           )}
-          <Button type="submit" className="mt-4 w-full">
-            Sign Up
-          </Button>
         </div>
 
         {/* Step 3: Confirmation */}

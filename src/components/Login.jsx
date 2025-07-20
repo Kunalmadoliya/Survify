@@ -41,14 +41,14 @@ const Login = ({onToggle}) => {
       <div className="flex border rounded-md overflow-hidden hover:cursor-pointer">
         <button
           type="button"
-          className="flex w-1/2 justify-center font-semibold p-2 text-black hover:bg-blue-300 transition"
+          className="flex w-1/2 border justify-center font-semibold p-2 text-black  transition"
         >
           Login
         </button>
         <button
           type="button"
           onClick={onToggle}
-          className="flex w-1/2 justify-center font-semibold p-2 text-black hover:bg-green-300 transition"
+          className="flex w-1/2 border justify-center font-semibold p-2 text-black  transition"
         >
           Sign up
         </button>
