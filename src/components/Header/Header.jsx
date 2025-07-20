@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import {Container} from "../../components/index";
 const Header = () => {
   const user = useSelector((state) => state.authSlice);
+  const client = user?.role === "client";
+  const provider = user?.role === "provider";
 
   const navItems = [
     {
@@ -32,6 +34,16 @@ const Header = () => {
       slug: "/auth",
       active: !user,
     },
+    {
+      name: "client",
+      slug: "/client",
+      active: client,
+    },
+    {
+      name: "Provider",
+      slug: "/provider",
+      active: provider,
+    },
   ];
 
   return (
@@ -39,9 +51,9 @@ const Header = () => {
       <Container>
         <header>
           <nav>
-            <div className="px-10 py-6  flex justify-between items-center font-extrabold  text-black ">
+            <div className="px-10 py-6  flex justify-between items-center  text-black ">
               <div>
-                <Logo />
+                <Logo  />
               </div>
 
               <ul className="flex gap-6 text-[1.1rem] items-center">

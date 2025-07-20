@@ -13,7 +13,7 @@ const Hoverbutton = ({
 
   const blueVariant = {
     initial: {y: 0, opacity: 1},
-    hover: {y: -100, opacity: 1},
+   
   };
 
   const greenVariant = {
@@ -24,7 +24,7 @@ const Hoverbutton = ({
   return (
     <motion.button
       type={type}
-      className={`relative hover:cursor-pointer overflow-hidden h-20 w-30  ${bgColor} ${textColor} ${className}`}
+      className={`relative hover:cursor-pointer overflow-hidden h-10 w-30  ${bgColor} ${textColor} ${className}`}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       {...props}

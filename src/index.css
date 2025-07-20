@@ -11,19 +11,3 @@ body {
 
 
 
-.bg-custom-oklch {
-    background-color: oklch(0.596 0.145 163.225);
-}
-
-.text-custom-oklch {
-    color: oklch(0.596 0.145 163.225);
-}
-
-.bg-gray-800 {
-    background-color: color-mix(in oklab, var(--color-gray-800) 50%, transparent);
-}
-
-
-.bg-hsl-dark {
-    background-color: hsl(222.2 84% 4.9%);
-}

@@ -1,16 +1,16 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import Stepper from "awesome-react-stepper";
-import {Input, Button} from "./index";
+import {Input, Button, Hoverbutton} from "./index";
 import authService from "../appwrite/auth";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {login} from "../store/actions/authSlice";
-import service from "../appwrite/configuration";
 
 const Signup = ({onToggle}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const stepperRef = useRef(null);
   const [error, setError] = useState("");
   const [selectedRole, setSelectedRole] = useState("");
 
@@ -19,14 +19,24 @@ const Signup = ({onToggle}) => {
     handleSubmit,
     formState: {errors},
     setValue,
+    trigger,
   } = useForm();
+
+  const handleNext = async () => {
+    const isValid = await trigger(["email", "password", "selectedRole"]);
+    if (!selectedRole) {
+      return;
+    }
+    if (isValid) {
+      stepperRef.current.nextStep();
+    }
+  };
 
   const create = async (data) => {
     setError("");
     try {
-      setValue("role", selectedRole); 
+      setValue("role", selectedRole);
       const userData = await authService.createAccount(data);
-      const role = watc
       if (userData) {
         const currentUser = await authService.getCurrentUser();
         dispatch(login(currentUser));
@@ -40,57 +50,64 @@ const Signup = ({onToggle}) => {
   return (
     <form
       onSubmit={handleSubmit(create)}
-      className="bg-gray-800 border border-white/10 p-12 sm:p-10 rounded-lg space-y-8 text-white"
+      className="border p-10 sm:p-10 rounded-lg space-y-8"
     >
-      <div className="flex border border-white/10 rounded-md overflow-hidden">
+      {/* Toggle Buttons */}
+      <div className="flex border rounded-md overflow-hidden">
         <button
           type="button"
           onClick={onToggle}
-          className="flex w-1/2 justify-center font-semibold p-2 text-gray-500 hover:bg-gray-800 hover:text-white"
+          className="flex w-1/2 justify-center font-semibold p-2 text-black hover:bg-blue-00 transition"
         >
           Login
         </button>
         <button
           type="button"
-          className="flex w-1/2 justify-center font-semibold p-2 bg-custom-oklch text-white"
+          className="flex w-1/2 justify-center font-semibold p-2 text-black hover:bg-green-300 transition"
         >
           Sign up
         </button>
       </div>
 
-      <Stepper>
+      <Stepper
+        
+      >
+        {/* Step 1: Role + Email + Password */}
         <div className="space-y-6">
-          <h1 className="text-2xl font-semibold mt-3">Choose Account Type</h1>
-          <div className="mt-5 grid grid-cols-2 gap-5">
+          <h1 className="text-2xl font-semibold mt-3 text-black">
+            Choose Account Type
+          </h1>
+
+          <div className="mt-5   grid grid-cols-2 gap-5">
             <button
               type="button"
-              className={`border border-white/10 text-center p-5 hover:bg-gray-800 hover:text-white rounded-md ${
-                selectedRole === "customer" ? "bg-custom-oklch" : ""
+              className={`border text-center p-5 hover:bg-blue-500 text-black rounded-md transition ${
+                selectedRole === "client" ? "bg-blue-100" : ""
               }`}
-              onClick={() => setSelectedRole("customer")}
+              onClick={() => setSelectedRole("client")}
             >
               <div className="flex flex-col items-center">
-                <i className="ri-user-line"></i>
+                <i className="ri-user-line text-xl"></i>
                 Customer
               </div>
             </button>
             <button
               type="button"
-              className={`border border-white/10 text-center p-5 hover:bg-gray-800 hover:text-white rounded-md ${
-                selectedRole === "provider" ? "bg-custom-oklch" : ""
+              className={`border text-center p-5 hover:bg-green-300 text-black rounded-md transition ${
+                selectedRole === "provider" ? "bg-green-100" : ""
               }`}
               onClick={() => setSelectedRole("provider")}
             >
               <div className="flex flex-col items-center">
-                <i className="ri-briefcase-4-line"></i>
+                <i className="ri-briefcase-4-line text-xl"></i>
                 Provider
               </div>
             </button>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-5 ">
             <Input
-              icon={<i className="ri-mail-line text-gray-400 text-xl"></i>}
+              icon={<i className="ri-mail-line text-black text-xl"></i>}
               type="email"
               placeholder="Enter your Email"
               {...register("email", {
@@ -103,28 +120,53 @@ const Signup = ({onToggle}) => {
               })}
             />
             {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email.message}</p>
+              <p className="text-red-600 text-sm">{errors.email.message}</p>
             )}
 
             <Input
-              icon={<i className="ri-lock-2-line text-gray-400 text-xl"></i>}
+              icon={<i className="ri-lock-2-line text-black text-xl"></i>}
               type="password"
               placeholder="Enter your Password"
               {...register("password", {required: "Password is required"})}
             />
             {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password.message}</p>
+              <p className="text-red-600 text-sm">{errors.password.message}</p>
             )}
 
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {error && <p className="text-red-600 text-sm">{error}</p>}
+
           </div>
         </div>
 
+        {/* Step 2: Customer info */}
         <div>
-         {selectedRole==="customer" ? "" : ""}
+          {selectedRole === "client" && (
+            <div className="space-y  mt-5">
+              <Input
+                icon={<i className="ri-user-line"></i>}
+                placeholder="Full Name"
+                type="text"
+                {...register("fullName", {
+                  required: "Full name is required",
+                })}
+              />
+              {errors.fullName && (
+                <p className="text-red-600 text-sm">
+                  {errors.fullName.message}
+                </p>
+              )}
+            </div>
+          )}
+          <Button type="submit" className="mt-4 w-full">
+            Sign Up
+          </Button>
         </div>
+
+        {/* Step 3: Confirmation */}
         <div>
-          <h1>Thank you for using Awesome React Stepper</h1>
+          <h1 className="text-black font-semibold">
+            Thank you for using HomeServify!
+          </h1>
         </div>
       </Stepper>
     </form>

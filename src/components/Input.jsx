@@ -24,7 +24,7 @@ const Input = ({
         id={id}
         type={type}
         placeholder={placeholder}
-        className={`w-full py-2 px-10 rounded-lg bg-transparent border border-gray-600 focus:border-green-500 outline-none text-white duration-300 ${className}`}
+        className={`w-full py-2 px-10 rounded-lg bg-transparent border border-gray-600 focus:border-green-500 outline-none  duration-300 ${className}`}
         {...props}
       />
     </div>

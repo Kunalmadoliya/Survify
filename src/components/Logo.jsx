@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Logo = () => {
+const Logo = ({className=""}) => {
   return (
     <div>
-      <h1 className='text-5xl font-extrabold'> HomeServify</h1>
+      <h1 className={`text-2xl font-extrabold ${className}`}> HomeServify</h1>
     </div>
   )
 }

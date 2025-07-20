@@ -1,8 +1,8 @@
 import conf from "../../conf/conf";
-import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { client, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service {
-  client = new Client();
+  client = new client();
   databases;
   bucket;
 
@@ -65,7 +65,7 @@ export class Service {
     }
   }
 
-  // 🔹 Clients/Users can fetch occupations (services)
+  // 🔹 clients/Users can fetch occupations (services)
   async getOccupation(slug) {
     try {
       return await this.databases.getDocument(

@@ -1,37 +1,59 @@
-import React, { useState } from "react";
-import Login from "./Login";
-import Signup from "./Signup";
+import React, {useState} from "react";
+import {Login, Signup, Container, Logo} from "../components/index";
+import {useNavigate} from "react-router-dom";
 
 const Authentication = () => {
   const [isLogin, setLogin] = useState(true);
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen w-full bg-hsl-dark flex items-center justify-center px-4">
-      <div className="w-full max-w-md space-y-5 text-center">
-        <h1 className="text-3xl sm:text-4xl text-white font-bold">
-          Welcome to{" "}
-          <span className="bg-gradient-to-r from-emerald-400 via-sky-400 to-purple-400 bg-clip-text text-transparent">
-            HomeServify
-          </span>
-        </h1>
-        <p className="text-gray-400 text-base sm:text-lg">
-          Join thousands of satisfied customers and trusted professionals
-        </p>
+    <Container>
+      <div className="min-h-screen flex flex-col">
+        {/* Top bar */}
+        <div className="flex items-center p-6 justify-between border">
+          <p
+            onClick={() => navigate("/")}
+            className="text-[1.1rem] hover:cursor-pointer"
+          >
+           <i className="ri-arrow-left-line"></i> Back
+          </p>
+          <Logo  />
+        </div>
 
-        {/* Form area */}
-        {isLogin ? (
-          <Login onToggle={() => setLogin(false)} />
-        ) : (
-          <Signup onToggle={() => setLogin(true)} />
-        )}
+        {/* Content area */}
+        <div className="flex-grow flex items-center justify-center px-4">
+          <div className="w-full max-w-md space-y-5 text-center">
+            <h1 className="text-3xl sm:text-4xl font-bold text-black">
+              Welcome to{" "}
+              <span className="hover:bg-blue-300 hover:text-black transition px-1">
+                HomeServify
+              </span>
+            </h1>
+            <p className="text-black text-base sm:text-lg">
+              Join thousands of satisfied clients and trusted professionals
+            </p>
 
-        <p className="text-gray-400 text-sm sm:text-base font-semibold">
-          By signing up, you agree to our{" "}
-          <span className="text-custom-oklch">Terms of Service</span> and{" "}
-          <span className="text-custom-oklch">Privacy Policy</span>
-        </p>
+            {/* Form area */}
+            {isLogin ? (
+              <Login onToggle={() => setLogin(false)} />
+            ) : (
+              <Signup onToggle={() => setLogin(true)} />
+            )}
+
+            <p className="text-gray-400 text-sm sm:text-base font-semibold">
+              By signing up, you agree to our{" "}
+              <span className="hover:bg-green-300 hover:text-black transition px-1 cursor-pointer">
+                Terms of Service
+              </span>{" "}
+              and{" "}
+              <span className="hover:bg-green-300 hover:text-black transition px-1 cursor-pointer">
+                Privacy Policy
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
