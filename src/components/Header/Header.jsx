@@ -39,12 +39,12 @@ const Header = () => {
       <Container>
         <header>
           <nav>
-            <div className="p-7 flex justify-between items-center border text-black">
+            <div className="px-10 py-6  flex justify-between items-center font-extrabold  text-black ">
               <div>
                 <Logo />
               </div>
 
-              <ul className="flex gap-6 items-center">
+              <ul className="flex gap-6 text-[1.1rem] items-center">
                 {navItems.map(
                   (item, i) =>
                     item.active &&
@@ -61,7 +61,7 @@ const Header = () => {
                 )}
               </ul>
 
-              <ul className="flex gap-4 items-center">
+              <ul className="flex gap-4 text-[1.1rem] items-center">
                 {navItems.map(
                   (item, i) =>
                     item.active &&

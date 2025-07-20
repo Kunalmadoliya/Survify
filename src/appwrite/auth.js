@@ -45,13 +45,15 @@ export class AuthService {
     }
   }
 
-  async getCurrentUser() {
-    try {
-      return await this.account.get();
-    } catch (error) {
-      throw error;
-    }
+async getCurrentUser() {
+  try {
+    return await this.account.get();
+  } catch (error) {
+    // When user is not logged in or session expired
+    return null;
   }
+}
+
 }
 
 const authService = new AuthService();

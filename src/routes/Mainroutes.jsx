@@ -1,8 +1,10 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
-import {Home, About, Service, Authentication} from "../components/index";
+import Home from "../Home"
+import { About,Service ,Authentication } from "../components/index";
 
 const Mainroutes = () => {
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />

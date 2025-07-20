@@ -24,7 +24,7 @@ const Hoverbutton = ({
   return (
     <motion.button
       type={type}
-      className={`relative hover:cursor-pointer overflow-hidden h-20 w-40  ${bgColor} ${textColor} ${className}`}
+      className={`relative hover:cursor-pointer overflow-hidden h-20 w-30  ${bgColor} ${textColor} ${className}`}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       {...props}
