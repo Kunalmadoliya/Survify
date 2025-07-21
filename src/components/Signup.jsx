@@ -1,14 +1,14 @@
-import React, {useState, useRef} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Stepper from "awesome-react-stepper";
-import {Input, Button} from "./index";
+import { Input, Button } from "./index";
 import authService from "../appwrite/auth";
-import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {useForm} from "react-hook-form";
-import {login} from "../store/actions/authSlice";
-import {Hoverbutton} from "../components/index";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { login } from "../store/actions/authSlice";
+import { Hoverbutton } from "../components/index";
 
-const Signup = ({onToggle}) => {
+const Signup = ({ onToggle }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const stepperRef = useRef(null);
@@ -30,17 +30,38 @@ const Signup = ({onToggle}) => {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
     setValue,
     trigger,
     watch,
   } = useForm();
 
-  
+  // Register hidden fields
+  useEffect(() => {
+    register("role");
+    register("service");
+  }, [register]);
+
   const create = async (data) => {
     setError("");
+
+    // Validate role selection
+    if (!selectedRole) {
+      setError("Please select a role (Customer or Provider).");
+      return;
+    }
+
+    // Validate service if provider
+    if (selectedRole === "provider" && !selectedService) {
+      setError("Please select a service category.");
+      return;
+    }
+
+    // Inject selected values into form data
+    setValue("role", selectedRole);
+    setValue("service", selectedService);
+
     try {
-      setValue("role", selectedRole);
       const userData = await authService.createAccount(data);
       if (userData) {
         const currentUser = await authService.getCurrentUser();
@@ -48,7 +69,7 @@ const Signup = ({onToggle}) => {
         navigate("/");
       }
     } catch (error) {
-      setError(error.message);
+      setError(error.message || "Something went wrong.");
     }
   };
 
@@ -73,6 +94,8 @@ const Signup = ({onToggle}) => {
         </button>
       </div>
 
+      {error && <p className="text-red-600 text-sm">{error}</p>}
+
       <Stepper
         ref={stepperRef}
         strokeColor="#17253975"
@@ -80,20 +103,12 @@ const Signup = ({onToggle}) => {
         activeColor="#172539"
         activeProgressBorder="2px solid #17253975"
         continueBtn={
-          <Hoverbutton
-            type="button"
-            className="stepperBtn rounded-md"
-          
-          >
+          <Hoverbutton type="button" className="stepperBtn rounded-md">
             Next
           </Hoverbutton>
         }
         backBtn={
-          <Hoverbutton
-            type="button"
-            className="stepperBtn rounded-md"
-          
-          >
+          <Hoverbutton type="button" className="stepperBtn rounded-md">
             Back
           </Hoverbutton>
         }
@@ -142,7 +157,7 @@ const Signup = ({onToggle}) => {
             icon={<i className="ri-user-line text-black text-xl"></i>}
             type="text"
             placeholder="Full Name"
-            {...register("fullName", {required: "Full name is required"})}
+            {...register("fullName", { required: "Full name is required" })}
           />
           {errors.fullName && (
             <p className="text-red-600 text-sm">{errors.fullName.message}</p>
@@ -167,12 +182,11 @@ const Signup = ({onToggle}) => {
 
         {/* Step 2: Role-based Inputs */}
         <div className="space-y-5 mt-5">
-          {/* Passwords (for both roles) */}
           <Input
             icon={<i className="ri-lock-2-line text-black text-xl"></i>}
             type="password"
             placeholder="Password"
-            {...register("password", {required: "Password is required"})}
+            {...register("password", { required: "Password is required" })}
           />
           {errors.password && (
             <p className="text-red-600 text-sm">{errors.password.message}</p>
@@ -194,7 +208,6 @@ const Signup = ({onToggle}) => {
             </p>
           )}
 
-          {/* Client-Specific Input */}
           {selectedRole === "client" && (
             <Input
               icon={<i className="ri-phone-line text-black text-xl"></i>}
@@ -204,7 +217,6 @@ const Signup = ({onToggle}) => {
             />
           )}
 
-          {/* Provider-Specific Inputs */}
           {selectedRole === "provider" && (
             <>
               <div>
@@ -228,7 +240,7 @@ const Signup = ({onToggle}) => {
               </div>
 
               <Input
-                className="mt-5 flex "
+                className="mt-5 flex"
                 icon={
                   <i className="ri-briefcase-3-line text-black text-xl"></i>
                 }

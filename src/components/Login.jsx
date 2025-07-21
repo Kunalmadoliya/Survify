@@ -1,13 +1,13 @@
-import {useForm} from "react-hook-form";
-import {login as authLogin} from "../store/actions/authSlice";
+import { useForm } from "react-hook-form";
+import { login as authLogin } from "../store/actions/authSlice";
 import authService from "../appwrite/auth";
-import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
-import {Input, Button, Hoverbutton} from "./index";
-import {useState} from "react";
+import { Input, Hoverbutton } from "./index";
+import { useState } from "react";
 
-const Login = ({onToggle}) => {
+const Login = ({ onToggle }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
@@ -15,22 +15,29 @@ const Login = ({onToggle}) => {
   const {
     register,
     handleSubmit,
-    formState: {errors, isSubmitting},
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const login = async (data) => {
-    setError("");
-    try {
-      const session = await authService.login(data);
-      if (session) {
-        const userData = await authService.getCurrentUser();
-        if (userData) dispatch(authLogin(userData));
-        navigate("/");
-      }
-    } catch (error) {
-      setError(error.message);
+  setError("");
+  try {
+    console.log("Attempting login...");
+    const session = await authService.login(data);
+    console.log("Session created:", session);
+
+    const userData = await authService.getCurrentUser();
+    console.log("User data:", userData);
+
+    if (userData) {
+      dispatch(authLogin({ userData }));
+      navigate("/");
     }
-  };
+  } catch (error) {
+    console.error("Login error:", error);
+    setError(error.message || "Something went wrong");
+  }
+};
+
 
   return (
     <form
@@ -41,14 +48,14 @@ const Login = ({onToggle}) => {
       <div className="flex border rounded-md overflow-hidden hover:cursor-pointer">
         <button
           type="button"
-          className="flex w-1/2 border justify-center font-semibold p-2 text-black  transition"
+          className="flex w-1/2 border justify-center font-semibold p-2 text-black transition"
         >
           Login
         </button>
         <button
           type="button"
           onClick={onToggle}
-          className="flex w-1/2 border justify-center font-semibold p-2 text-black  transition"
+          className="flex w-1/2 border justify-center font-semibold p-2 text-black transition"
         >
           Sign up
         </button>
@@ -78,7 +85,7 @@ const Login = ({onToggle}) => {
           icon={<i className="ri-lock-2-line text-black text-xl"></i>}
           type="password"
           placeholder="Enter your Password"
-          {...register("password", {required: "Password is required"})}
+          {...register("password", { required: "Password is required" })}
         />
         {errors.password && (
           <p className="text-red-600 text-left text-sm pl-1">
@@ -94,12 +101,12 @@ const Login = ({onToggle}) => {
       <Hoverbutton
         type="submit"
         disabled={isSubmitting}
-        className="mt-3 w-full h-15 text-[1.3rem] rounded-md "
+        className="mt-3 w-full h-15 text-[1.3rem] rounded-md"
       >
         {isSubmitting ? (
           <i className="ri-loader-4-line animate-spin text-1xl"></i>
         ) : (
-          "Sign Up"
+          "Login" // ✅ Fixed label
         )}
       </Hoverbutton>
     </form>

@@ -1,7 +1,13 @@
 import React from "react";
-import {Route, Routes, useLocation} from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "../Home";
-import {About, Service, Authentication, Header} from "../components/index";
+import {
+  About,
+  Service,
+  Authentication,
+  Header,
+} from "../components/index";
+import Authservice from "../components/Authservice"; 
 
 const Mainroutes = () => {
   const location = useLocation();
@@ -13,9 +19,35 @@ const Mainroutes = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/service" element={<Service />} />
-        <Route path="/auth" element={<Authentication />} />
+
+        {/* Public route: only for unauthenticated users */}
+        <Route
+          path="/auth"
+          element={
+            <Authservice authentication={false}>
+              <Authentication />
+            </Authservice>
+          }
+        />
+
+        {/* Protected routes: only for authenticated users */}
+        <Route
+          path="/about"
+          element={
+            <Authservice authentication>
+              <About />
+            </Authservice>
+          }
+        />
+
+        <Route
+          path="/service"
+          element={
+            <Authservice authentication>
+              <Service />
+            </Authservice>
+          }
+        />
       </Routes>
     </>
   );

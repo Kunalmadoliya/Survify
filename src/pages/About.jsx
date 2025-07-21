@@ -36,13 +36,7 @@ const About = () => {
             </div>
           </div>
           <div className=" w-2/4 flex  justify-center items-center">
-            <Stack
-              randomRotation={true}
-              sensitivity={280}
-              sendToBackOnClick={false}
-              cardDimensions={{width: 450, height: 580}}
-              cardsData={images}
-            />
+            
           </div>
         </div>
       </Container>
