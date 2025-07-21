@@ -36,12 +36,7 @@ const Signup = ({onToggle}) => {
     watch,
   } = useForm();
 
-  const handleNext = async () => {
-    const isValid = await trigger(["fullName", "email"]);
-    if (!selectedRole) return;
-    if (isValid) stepperRef.current.nextStep();
-  };
-
+  
   const create = async (data) => {
     setError("");
     try {
@@ -88,7 +83,7 @@ const Signup = ({onToggle}) => {
           <Hoverbutton
             type="button"
             className="stepperBtn rounded-md"
-            onClick={handleNext}
+          
           >
             Next
           </Hoverbutton>
@@ -97,7 +92,7 @@ const Signup = ({onToggle}) => {
           <Hoverbutton
             type="button"
             className="stepperBtn rounded-md"
-            onClick={() => stepperRef.current.previousStep()}
+          
           >
             Back
           </Hoverbutton>

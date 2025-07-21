@@ -13,6 +13,8 @@ import Hero from "../pages/Hero";
 import About from "../pages/About";
 import Service from "../pages/Service";
 import Mainroutes from "../routes/Mainroutes";
+import Stack from "./Animations/Stack";
+
 
 export {
   Header,
@@ -30,4 +32,6 @@ export {
   About,
   Service,
   Mainroutes,
+  Stack
+
 };
