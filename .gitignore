@@ -1,4 +1,4 @@
-# Logs
+# --- Logs ---
 logs
 *.log
 npm-debug.log*
@@ -7,18 +7,50 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# --- Runtime data ---
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# --- Node modules ---
+node_modules/
+
+# --- Build output ---
+dist/
+dist-ssr/
+build/
+out/
+
+# --- Environment variables ---
+.env
+.env.* # in case you use multiple envs
+
+# --- IDE and editor settings ---
+.vscode/
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# --- System Files ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Optional: TypeScript ---
+*.tsbuildinfo
+
+# --- Optional: OS files ---
+*.log?
+*.bak
+*.tmp
+*.orig
+
+# --- Optional: coverage/testing ---
+coverage/
+.nyc_output/
+test-output/
