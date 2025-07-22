@@ -23,8 +23,7 @@ build/
 out/
 
 # --- Environment variables ---
-.env
-.env.* # in case you use multiple envs
+
 
 # --- IDE and editor settings ---
 .vscode/
