@@ -8,7 +8,7 @@ const Authservice = ({children, authentication = true}) => {
   const authStatus = useSelector((state) => state.auth.status);
   useEffect(() => {
     if (authentication && authStatus !== authentication) {
-      navigate("/login");
+      navigate("/auth");
     } else if (!authentication && authStatus !== authentication) {
       navigate("/");
     }

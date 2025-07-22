@@ -1,7 +1,9 @@
 import React from "react";
 import {Container, Stack} from "../components/index";
+import ScrollVelocity from "../components/Animations/ScrollVelocity";
 
 const About = () => {
+  const companyNames = ["Home Survify", "Home Survify"];
   const images = [
     {
       id: 1,
@@ -22,24 +24,39 @@ const About = () => {
   ];
   return (
     <>
-      <Container>
-        <div className=" flex h-screen">
-          <div className=" w-2/4 flex flex-col  justify-center items-center">
-            <h1 className="text-7xl font-extrabold">
-              Trusted professionals, people just like you!
-            </h1>
-            <div className="flex w-full justify-center p-15 gap-5">
-              <button className="border px-10 p-3 rounded-lg bg-black text-[#F9F8F4]">
-                Get Started <i className="ri-arrow-right-line"></i>
-              </button>
-              <button className="border px-10 p-3 rounded-lg">Book a Service</button>
+      <div className="w-full px-5 ">
+        <div className="bg-blue-600  w-full flex justify-center items-center overflow-hidden ">
+          <ScrollVelocity
+            texts={companyNames.map((name, index) => (
+              <p
+                key={index}
+                className="text-white text-7xl p-1 font-extrabold "
+              >
+                {name}
+              </p>
+            ))}
+          />
+        </div>
+        <Container>
+          <div className="  h-screen">
+            <div className="border  flex justify-between gap-10">
+              <div className="border p-10">
+                <div className="text-5xl font-bold">
+                  <h1>Thats The Way</h1>
+                  <h1>To Camp!</h1>
+                </div>
+
+                <p className="font-bold text-lg text-gray-400">
+                  try a variety of benifts when using our services!
+                </p>
+              </div>
+              <div className="border"></div>
+              <div className="border"></div>
+              <div className="border"></div>
             </div>
           </div>
-          <div className=" w-2/4 flex  justify-center items-center">
-            
-          </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </>
   );
 };

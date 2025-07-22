@@ -14,6 +14,7 @@ import About from "../pages/About";
 import Service from "../pages/Service";
 import Mainroutes from "../routes/Mainroutes";
 import Stack from "./Animations/Stack";
+import ScrollFloat from "./Animations/ScrollFloat";
 
 
 export {
@@ -32,6 +33,7 @@ export {
   About,
   Service,
   Mainroutes,
-  Stack
+  Stack,
+  ScrollFloat
 
 };

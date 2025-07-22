@@ -1,14 +1,27 @@
 import React from "react";
-import {Container, Header, Hero, About, Service} from "./components/index";
+import {
+  Container,
+  Header,
+  Hero,
+  About,
+  Service,
+  ScrollFloat,
+} from "./components/index";
 
 const Home = () => {
   return (
     <>
-      <Container>
-        <Hero/>
+      <ScrollFloat>
+        <Hero />
+      </ScrollFloat>
+      <ScrollFloat>
         <About />
+      </ScrollFloat>
+      <ScrollFloat>
         <Service />
-      </Container>
+      </ScrollFloat>
+
+      <Service />
     </>
   );
 };

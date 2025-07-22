@@ -1,97 +1,129 @@
-import {useSelector} from "react-redux";
-import {Logo} from "../index";
-import {Link} from "react-router-dom";
-import {Container} from "../../components/index";
+"use client";
+import {
+  Navbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  NavbarLogo,
+  NavbarButton,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "../../components/ui/resizable-navbar";
+
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { Container, Logo } from "../../components/index";
+
 const Header = () => {
   const user = useSelector((state) => state.authSlice);
-  const client = user?.role === "client";
-  const provider = user?.role === "provider";
+  const isClient = user?.role === "client";
+  const isProvider = user?.role === "provider";
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    {
-      name: "Home",
-      slug: "/",
-      active: true,
-    },
-
-    {
-      name: "Service",
-      slug: "/service",
-      active: true,
-    },
-    {
-      name: "About",
-      slug: "/",
-      active: true,
-    },
-    {
-      name: "Login",
-      slug: "/auth",
-      active: !user,
-    },
-    {
-      name: "Sign Up",
-      slug: "/auth",
-      active: !user,
-    },
-    {
-      name: "client",
-      slug: "/client",
-      active: client,
-    },
-    {
-      name: "Provider",
-      slug: "/provider",
-      active: provider,
-    },
+    { name: "Home", link: "/", show: true },
+    { name: "Service", link: "/service", show: true },
+    { name: "About", link: "/about", show: true },
+    { name: "Login", link: "/auth", show: !user },
+    { name: "Sign Up", link: "/auth", show: !user },
+    { name: "Client", link: "/client", show: isClient },
+    { name: "Provider", link: "/provider", show: isProvider },
   ];
 
   return (
-    <>
-      <Container>
-        <header>
-          <nav>
-            <div className="px-10 py-6  flex justify-between items-center  text-black ">
-              <div>
-                <Logo  />
-              </div>
-
-              <ul className="flex gap-6 text-[1.1rem] items-center">
-                {navItems.map(
-                  (item, i) =>
-                    item.active &&
-                    (item.name === "Home" ||
-                      item.name === "Service" ||
-                      item.name === "About") && (
-                      <li
-                        key={i}
-                        className="text-black hover:underline cursor-pointer"
-                      >
-                        <Link to={item.slug}>{item.name}</Link>
-                      </li>
-                    )
-                )}
-              </ul>
-
-              <ul className="flex gap-4 text-[1.1rem] items-center">
-                {navItems.map(
-                  (item, i) =>
-                    item.active &&
-                    (item.name === "Login" || item.name === "Sign Up") && (
-                      <li
-                        key={i}
-                        className="text-black hover:underline cursor-pointer"
-                      >
-                        <Link to={item.slug}>{item.name}</Link>
-                      </li>
-                    )
-                )}
-              </ul>
+    <Container>
+      <div className="relative w-full p-13">
+        <Navbar>
+          <NavBody>
+            <div className="flex items-center gap-2">
+              <NavbarLogo>
+                <Logo />
+              </NavbarLogo>
             </div>
-          </nav>
-        </header>
-      </Container>
-    </>
+            <NavItems
+              items={navItems
+                .filter(
+                  (item) =>
+                    item.show &&
+                    ["Home", "Service", "About", "Client", "Provider"].includes(
+                      item.name
+                    )
+                )
+                .map((item) => ({
+                  name: item.name,
+                  link: item.link,
+                }))}
+            />
+            <div className="flex items-center gap-4">
+              {navItems
+                .filter(
+                  (item) => item.show && ["Login", "Sign Up"].includes(item.name)
+                )
+                .map((item, i) => (
+                  <Link key={i} to={item.link}>
+                    <NavbarButton
+                      variant={item.name === "Sign Up" ? "primary" : "secondary"}
+                    >
+                      {item.name}
+                    </NavbarButton>
+                  </Link>
+                ))}
+            </div>
+          </NavBody>
+
+          <MobileNav>
+            <MobileNavHeader>
+              <NavbarLogo>
+                <Logo />
+              </NavbarLogo>
+              <MobileNavToggle
+                isOpen={isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              />
+            </MobileNavHeader>
+
+            <MobileNavMenu
+              isOpen={isMobileMenuOpen}
+              onClose={() => setIsMobileMenuOpen(false)}
+            >
+              {navItems
+                .filter((item) => item.show)
+                .map((item, idx) => (
+                  <Link
+                    key={idx}
+                    to={item.link}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="relative text-neutral-300"
+                  >
+                    <span className="block">{item.name}</span>
+                  </Link>
+                ))}
+
+              <div className="flex w-full flex-col gap-4 mt-4">
+                {navItems
+                  .filter(
+                    (item) => item.show && ["Login", "Sign Up"].includes(item.name)
+                  )
+                  .map((item, idx) => (
+                    <Link key={idx} to={item.link}>
+                      <NavbarButton
+                        variant="primary"
+                        className="w-full"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </NavbarButton>
+                    </Link>
+                  ))}
+              </div>
+            </MobileNavMenu>
+          </MobileNav>
+        </Navbar>
+      </div>
+    </Container>
   );
 };
 
