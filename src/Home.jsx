@@ -17,11 +17,15 @@ const Home = () => {
       <ScrollFloat>
         <About />
       </ScrollFloat>
-      <ScrollFloat>
+      <ScrollFloat
+        animationDuration={1}
+        ease="back.inOut(2)"
+        scrollStart="center bottom+=100%"
+        scrollEnd="bottom bottom-=100%"
+        stagger={0.09}
+      >
         <Service />
       </ScrollFloat>
-
-      <Service />
     </>
   );
 };

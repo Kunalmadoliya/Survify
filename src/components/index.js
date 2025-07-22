@@ -15,6 +15,10 @@ import Service from "../pages/Service";
 import Mainroutes from "../routes/Mainroutes";
 import Stack from "./Animations/Stack";
 import ScrollFloat from "./Animations/ScrollFloat";
+import HorizontalScrollSection from "./Animations/HorizontalScrollSection";
+
+
+
 
 
 export {
@@ -34,6 +38,8 @@ export {
   Service,
   Mainroutes,
   Stack,
-  ScrollFloat
+  ScrollFloat,
+  HorizontalScrollSection
+  
 
 };

@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import {motion} from "framer-motion";
 import {Header, Container, Hoverbutton, Homecards} from "../components/index";
 import Text from "../components/Animations/Text";
-
+import ScrollVelocity from "../components/Animations/ScrollVelocity";
 
 const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
-
+  const companyNames = ["Home Survify", "Home Survify"];
 
   return (
     <>
@@ -36,11 +36,21 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="text-center p-10">
+        <div className="text-center p-6">
           <p className="text-gray-500">
             Join 150+ households trusting HomeServify for reliable home
             services.
           </p>
+        </div>
+
+        <div className="bg-blue-600 w-full flex justify-center items-center overflow-hidden">
+          <ScrollVelocity
+            texts={companyNames.map((name, index) => (
+              <p key={index} className="text-white text-7xl p-1 font-extrabold">
+                {name}
+              </p>
+            ))}
+          />
         </div>
       </Container>
     </>

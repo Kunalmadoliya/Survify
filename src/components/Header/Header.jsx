@@ -33,47 +33,48 @@ const Header = () => {
     { name: "Provider", link: "/provider", show: isProvider },
   ];
 
+  const mainNavItems = navItems
+    .filter((item) =>
+      item.show &&
+      ["Home", "Service", "About", "Client", "Provider"].includes(item.name)
+    )
+    .map((item) => ({ name: item.name, link: item.link }));
+
+  const authNavItems = navItems.filter(
+    (item) => item.show && ["Login", "Sign Up"].includes(item.name)
+  );
+
   return (
     <Container>
       <div className="relative w-full p-13">
         <Navbar>
           <NavBody>
+           
             <div className="flex items-center gap-2">
               <NavbarLogo>
                 <Logo />
               </NavbarLogo>
             </div>
-            <NavItems
-              items={navItems
-                .filter(
-                  (item) =>
-                    item.show &&
-                    ["Home", "Service", "About", "Client", "Provider"].includes(
-                      item.name
-                    )
-                )
-                .map((item) => ({
-                  name: item.name,
-                  link: item.link,
-                }))}
-            />
+
+          
+            <NavItems items={mainNavItems} />
+
+    
             <div className="flex items-center gap-4">
-              {navItems
-                .filter(
-                  (item) => item.show && ["Login", "Sign Up"].includes(item.name)
-                )
-                .map((item, i) => (
-                  <Link key={i} to={item.link}>
-                    <NavbarButton
-                      variant={item.name === "Sign Up" ? "primary" : "secondary"}
-                    >
-                      {item.name}
-                    </NavbarButton>
-                  </Link>
-                ))}
+              {authNavItems.map((item, i) => (
+                <NavbarButton
+                  key={i}
+                  as={Link}
+                  to={item.link}
+                  variant={item.name === "Sign Up" ? "primary" : "secondary"}
+                >
+                  {item.name}
+                </NavbarButton>
+              ))}
             </div>
           </NavBody>
 
+        
           <MobileNav>
             <MobileNavHeader>
               <NavbarLogo>
@@ -89,6 +90,7 @@ const Header = () => {
               isOpen={isMobileMenuOpen}
               onClose={() => setIsMobileMenuOpen(false)}
             >
+         
               {navItems
                 .filter((item) => item.show)
                 .map((item, idx) => (
@@ -102,22 +104,20 @@ const Header = () => {
                   </Link>
                 ))}
 
+              
               <div className="flex w-full flex-col gap-4 mt-4">
-                {navItems
-                  .filter(
-                    (item) => item.show && ["Login", "Sign Up"].includes(item.name)
-                  )
-                  .map((item, idx) => (
-                    <Link key={idx} to={item.link}>
-                      <NavbarButton
-                        variant="primary"
-                        className="w-full"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </NavbarButton>
-                    </Link>
-                  ))}
+                {authNavItems.map((item, idx) => (
+                  <NavbarButton
+                    key={idx}
+                    as={Link}
+                    to={item.link}
+                    variant="primary"
+                    className="w-full"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </NavbarButton>
+                ))}
               </div>
             </MobileNavMenu>
           </MobileNav>

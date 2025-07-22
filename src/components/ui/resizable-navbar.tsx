@@ -68,7 +68,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      className={cn("fixed top-5 px-10 inset-x-0 z-50 w-full", className)}
+      className={cn("fixed top-2 px-10 inset-x-0 z-50 w-full", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -236,7 +236,7 @@ export const NavbarLogo = () => {
 
 export const NavbarButton = ({
   href,
-  as: Tag = "a",
+  as: Tag = href ? "a" : "button",
   children,
   className,
   variant = "primary",
@@ -252,7 +252,7 @@ export const NavbarButton = ({
   | React.ComponentPropsWithoutRef<"button">
 )) => {
   const baseStyles =
-    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
+    "px-4 py-2 rounded-md bg-white button text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
   const variantStyles = {
     primary:
@@ -265,11 +265,11 @@ export const NavbarButton = ({
 
   return (
     <Tag
-      href={href || undefined}
+      {...(href ? { href } : {})}
       className={cn(baseStyles, variantStyles[variant], className)}
       {...props}
     >
       {children}
     </Tag>
   );
-};                          
+};
