@@ -77,10 +77,9 @@ const About = () => {
       />
     </div>
   ));
-
   return (
-    <Container>
-      <div className="w-full  py-20">
+    <section id="about" className="relative">
+      <Container>
         {/* Header */}
         <div className="flex flex-col md:flex-row md:justify-between gap-6 md:gap-10 mb-8 px-4 sm:px-6 md:px-0 items-center">
           <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold">
@@ -99,15 +98,15 @@ const About = () => {
           </div>
         </div>
 
-        <div className="py-10">
-          <HorizontalScrollSection
-            panels={panels}
-            speed={10}
-            className="py-10"
-          />
-        </div>
-      </div>
-    </Container>
+        {/* Horizontal Scroll */}
+        <HorizontalScrollSection
+          panels={panels}
+          autoSpeed={0.5} // Auto-scroll animation
+          pinAt={0} // Start pinning from top
+          className="py-10"
+        />
+      </Container>
+    </section>
   );
 };
 

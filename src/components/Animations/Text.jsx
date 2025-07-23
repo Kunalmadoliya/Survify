@@ -2,7 +2,24 @@ import {motion, AnimatePresence} from "motion/react";
 import {useState, useEffect} from "react";
 
 const Text = ({className}) => {
-  const words = ["Service.", "Business."];
+  const words = [
+    "Cleaning.",
+    "Repair.",
+    "Salon.",
+    "Massage.",
+    "Fitness.",
+    "Painting.",
+    "Plumbing.",
+    "Makeup.",
+    "Puja.",
+    "Coaching.",
+    "Shifting.",
+    "Styling.",
+    "Renovation.",
+    "Consulting.",
+    "Training.",
+  ];
+
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {

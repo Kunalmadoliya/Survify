@@ -14,9 +14,7 @@ const Home = () => {
       <ScrollFloat>
         <Hero />
       </ScrollFloat>
-      <ScrollFloat>
-        <About />
-      </ScrollFloat>
+
       <ScrollFloat
         animationDuration={1}
         ease="back.inOut(2)"
@@ -26,6 +24,10 @@ const Home = () => {
       >
         <Service />
       </ScrollFloat>
+      <ScrollFloat>
+        <About />
+      </ScrollFloat>
+      
     </>
   );
 };

@@ -16,6 +16,9 @@ import Mainroutes from "../routes/Mainroutes";
 import Stack from "./Animations/Stack";
 import ScrollFloat from "./Animations/ScrollFloat";
 import HorizontalScrollSection from "./Animations/HorizontalScrollSection";
+import ScrollScaleReveal from "./Animations/ScrollScaleReveal";
+import AnimatedCardStack from "./Animations/AnimatedCardStack";
+
 
 
 
@@ -39,7 +42,9 @@ export {
   Mainroutes,
   Stack,
   ScrollFloat,
-  HorizontalScrollSection
-  
+  HorizontalScrollSection,
+  ScrollScaleReveal,
+  AnimatedCardStack,
+
 
 };

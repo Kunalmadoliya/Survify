@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    title: "Plumber",
+    title: "Painting",
     description: "Fix leaks, install pipes & more",
     image:
       "https://plus.unsplash.com/premium_photo-1681566677688-9b6b09cfadd2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0",

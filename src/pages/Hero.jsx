@@ -16,7 +16,7 @@ const Hero = () => {
             <div className="h-100 w-full px-10">
               <h1 className="text-7xl font-extrabold">Best.</h1>
               <h1 className="text-7xl font-extrabold">In The.</h1>
-              <div className="overflow-hidden w-[320px] h-[80px] bg-blue-600 mt-2">
+              <div className="overflow-hidden w-[400px] h-[80px] bg-blue-600 mt-2">
                 <Text />
               </div>
             </div>

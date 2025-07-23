@@ -2,8 +2,7 @@ import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import authService from "./appwrite/auth";
 import {login, logout} from "./store/actions/authSlice";
-import {Header , Footer , Mainroutes} from "./components/index"
-import Home from "./Home";
+import {Header, Footer, Mainroutes} from "./components/index";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -23,14 +22,11 @@ const App = () => {
   }, []);
 
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between ">
-      <div className="w-full block">
-        
-        <main>
-          <Mainroutes />
-        </main>
-        <Footer />
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-grow">
+        <Mainroutes />
+      </main>
+      <Footer />
     </div>
   ) : null;
 };
