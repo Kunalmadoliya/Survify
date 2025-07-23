@@ -98,11 +98,11 @@ const About = () => {
           </div>
         </div>
 
-        {/* Horizontal Scroll */}
+       
         <HorizontalScrollSection
           panels={panels}
-          autoSpeed={0.5} // Auto-scroll animation
-          pinAt={0} // Start pinning from top
+          autoSpeed={0.5} 
+          pinAt={0} 
           className="py-10"
         />
       </Container>

@@ -1,17 +1,21 @@
-import React from "react";
 import {
-  Container,
-  Header,
   Hero,
   About,
   Service,
   ScrollFloat,
+  Testimonials,
 } from "./components/index";
 
 const Home = () => {
   return (
     <>
-      <ScrollFloat>
+      <ScrollFloat
+        animationDuration={1}
+        ease="back.inOut(2)"
+        scrollStart="center bottom+=100%"
+        scrollEnd="bottom bottom-=100%"
+        stagger={0.09}
+      >
         <Hero />
       </ScrollFloat>
 
@@ -24,10 +28,24 @@ const Home = () => {
       >
         <Service />
       </ScrollFloat>
-      <ScrollFloat>
+      <ScrollFloat
+        animationDuration={1}
+        ease="back.inOut(2)"
+        scrollStart="center bottom+=100%"
+        scrollEnd="bottom bottom-=100%"
+        stagger={0.09}
+      >
         <About />
       </ScrollFloat>
-      
+      <ScrollFloat
+        animationDuration={1}
+        ease="back.inOut(2)"
+        scrollStart="center bottom+=100%"
+        scrollEnd="bottom bottom-=100%"
+        stagger={0.09}
+      >
+        <Testimonials />
+      </ScrollFloat>
     </>
   );
 };

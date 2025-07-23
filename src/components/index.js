@@ -18,11 +18,8 @@ import ScrollFloat from "./Animations/ScrollFloat";
 import HorizontalScrollSection from "./Animations/HorizontalScrollSection";
 import ScrollScaleReveal from "./Animations/ScrollScaleReveal";
 import AnimatedCardStack from "./Animations/AnimatedCardStack";
-
-
-
-
-
+import {DraggableCardContainer} from "./ui/draggable-card";
+import Testimonials from "../pages/Testimonials";
 
 export {
   Header,
@@ -45,6 +42,6 @@ export {
   HorizontalScrollSection,
   ScrollScaleReveal,
   AnimatedCardStack,
-
-
+ DraggableCardContainer,
+  Testimonials,
 };
