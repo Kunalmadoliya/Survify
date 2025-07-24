@@ -7,7 +7,7 @@ Built with a focus on performance, structure, and beautiful UI animations. 💫
 ---
 
 ## 🚀 Live Demo
-👉 [Check it out on Netlify](homesurvify.netlify.app) 
+👉 [CLICK HERE](https://homesurvify.netlify.app/) 
 
 ---
 
