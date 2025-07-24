@@ -1,6 +1,5 @@
 import React from "react";
-import {Container} from "../components/index";
-
+import { Container } from "../components/index";
 import {
   DraggableCardBody,
   DraggableCardContainer,
@@ -13,8 +12,7 @@ const Testimonials = () => {
       image:
         "https://media.istockphoto.com/id/1144287292/photo/headshot-portrait-of-happy-mixed-race-african-girl-wearing-glasses.webp?a=1&b=1&s=612x612&w=0&k=20&c=Rt2Un4fAZ7ky3zK0cxpUUcxKj8p23c7D_CkUwh4JuT0=",
       className: "absolute top-10 left-[50%] rotate-[-5deg]",
-      description:
-        "The attention to detail and speed of service was unmatched. Truly impressive!",
+      description: "The attention to detail and speed of service was unmatched. Truly impressive!",
       stars: "⭐⭐⭐⭐⭐",
     },
     {
@@ -22,8 +20,7 @@ const Testimonials = () => {
       image:
         "https://images.unsplash.com/photo-1594679085391-0ea2baba0145?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGN1c3RvbWVycyUyMGhhcHB5JTIwZmFjZSUyMGRhcmtlciUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D",
       className: "absolute top-40 left-[25%] rotate-[-7deg]",
-      description:
-        "Professional, punctual, and exceeded expectations. Highly recommend!",
+      description: "Professional, punctual, and exceeded expectations. Highly recommend!",
       stars: "⭐⭐⭐⭐",
     },
     {
@@ -31,8 +28,7 @@ const Testimonials = () => {
       image:
         "https://images.unsplash.com/photo-1573289271755-98a7a8b16e62?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGN1c3RvbWVycyUyMGhhcHB5JTIwZmFjZSUyMGRhcmtlciUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D",
       className: "absolute top-5 left-[40%] rotate-[8deg]",
-      description:
-        "Loved the smooth experience. Everything was done with great care.",
+      description: "Loved the smooth experience. Everything was done with great care.",
       stars: "⭐⭐⭐⭐⭐",
     },
     {
@@ -48,8 +44,7 @@ const Testimonials = () => {
       image:
         "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       className: "absolute top-20 right-[35%] rotate-[2deg]",
-      description:
-        "It felt very personalized. They really understand customer needs.",
+      description: "It felt very personalized. They really understand customer needs.",
       stars: "⭐⭐⭐⭐",
     },
     {
@@ -57,8 +52,7 @@ const Testimonials = () => {
       image:
         "https://plus.unsplash.com/premium_photo-1669138140804-a593bab110d2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aGFwcHl8ZW58MHx8MHx8fDA%3D",
       className: "absolute top-24 left-[45%] rotate-[-7deg]",
-      description:
-        "Amazing experience. Fast, clean, and reliable — what else do you need?",
+      description: "Amazing experience. Fast, clean, and reliable — what else do you need?",
       stars: "⭐⭐⭐⭐⭐",
     },
     {
@@ -73,47 +67,39 @@ const Testimonials = () => {
   ];
 
   return (
-    <>
-      <Container>
-        <div className=" bg-blue-600 mb-10  mt-5 rounded-lg">
-          <div className="py-16">
-            <h1 className="text-center text-6xl  font-extrabold text-neutral-800 dark:text-white">
-              Here's What Our{" "}
-              <span className="text-black bg-green-500 px-3 rounded-md">
-                Family
-              </span>{" "}
-              Say
-            </h1>
+    <Container>
+      <div className="bg-blue-600 mb-10 mt-5 rounded-lg px-4">
+        <div className="py-16">
+          <h1 className="text-center text-4xl sm:text-5xl md:text-6xl font-extrabold text-neutral-800 dark:text-white">
+            Here's What Our{" "}
+            <span className="text-black bg-green-500 px-3 rounded-md">Family</span> Say
+          </h1>
 
-            <DraggableCardContainer className="relative flex h-[600px] w-full items-center justify-center overflow-clip rounded-md">
-              <p className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-3xl font-black text-white md:text-4xl dark:text-white">
-                IT'S Pure 10 Days Of HardWork!!!!
-              </p>
+          <DraggableCardContainer className="relative flex h-[600px] w-full items-center justify-center overflow-clip rounded-md mt-10">
+            <p className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-2xl sm:text-3xl md:text-4xl font-black text-white dark:text-white">
+              IT'S Pure 10 Days Of HardWork!!!!
+            </p>
 
-              {items.map((item, index) => (
-                <DraggableCardBody key={index} className={item.className}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="pointer-events-none relative z-10 h-60 w-80 object-cover"
-                  />
-                  <div className="mt-4 text-center">
-                    <h3 className="text-2xl font-bold text-white ">
-                      {item.title}
-                    </h3>
-                    <p className="text-xl mt-1">{item.stars}</p>
-
-                    <p className="mt-2 text-base font-medium text-white  max-w-xs mx-auto">
-                      {item.description}
-                    </p>
-                  </div>
-                </DraggableCardBody>
-              ))}
-            </DraggableCardContainer>
-          </div>
+            {items.map((item, index) => (
+              <DraggableCardBody key={index} className={item.className}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="pointer-events-none relative z-10 h-60 w-80 object-cover rounded-lg shadow-lg"
+                />
+                <div className="mt-4 text-center">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">{item.title}</h3>
+                  <p className="text-lg mt-1">{item.stars}</p>
+                  <p className="mt-2 text-sm sm:text-base font-medium text-white max-w-xs mx-auto">
+                    {item.description}
+                  </p>
+                </div>
+              </DraggableCardBody>
+            ))}
+          </DraggableCardContainer>
         </div>
-      </Container>
-    </>
+      </div>
+    </Container>
   );
 };
 
