@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import {Header, Container, Hoverbutton, Homecards} from "../components/index";
 import Text from "../components/Animations/Text";
 import ScrollVelocity from "../components/Animations/ScrollVelocity";
-import "../styles/hero.css";
+import "../styles/temp.css";
 
 const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
