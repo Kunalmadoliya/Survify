@@ -1,4 +1,4 @@
-import {useNavigate, useLocation} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Logo from "../components/Logo";
 import {
   AnimatedCardStack,
@@ -8,13 +8,13 @@ import {
 
 const Service = () => {
   const navigate = useNavigate();
-  const locition = useLocation();
+  const location = useLocation();
 
   return (
     <section id="service" className="py-10 px-4 sm:px-6 md:py-5 mb-20">
       <Container>
-        {locition.pathname === "/service" && (
-          <div className="flex items-center p-6 justify-between ">
+        {location.pathname === "/service" && (
+          <div className="flex items-center p-6 justify-between">
             <p
               onClick={() => navigate("/")}
               className="text-[1.1rem] hover:cursor-pointer"
@@ -30,13 +30,11 @@ const Service = () => {
             <h1 className="text-xl sm:text-3xl md:text-4xl text-gray-400 leading-tight">
               From grooming to gadgets, get trained
             </h1>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl  text-gray-400 leading-snug flex items-center justify-center flex-wrap gap-2">
-              <span className="bg-green-500 rounded-full px-2 text-black">
-                👷
-              </span>
-              <span className="text-black">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl text-black leading-snug flex items-center justify-center flex-wrap gap-2">
+              <span className="bg-green-500 rounded-full px-2">👷</span>
+              <span>
                 Professionals{" "}
-                <span className="text-gray-400"> at your convenience.</span>
+                <span className="text-gray-400">at your convenience.</span>
               </span>
             </h1>
           </div>
