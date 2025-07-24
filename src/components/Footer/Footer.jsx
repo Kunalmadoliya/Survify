@@ -3,8 +3,10 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-10 px-4">
-      <div className="flex justify-center items-center">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left w-full max-w-6xl">
+      <div className="max-w-6xl mx-auto flex flex-col items-center md:items-start">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full text-center md:text-left">
+          {/* Brand Info */}
           <div>
             <h1 className="text-2xl font-bold">HomeServify</h1>
             <p className="text-gray-400 mt-2 text-sm sm:text-base">
@@ -14,7 +16,8 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 justify-center">
+          {/* Navigation Links */}
+          <div className="grid grid-cols-2 gap-6 justify-center md:justify-start">
             <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
               <li>
                 <a href="#" className="hover:text-white transition">
@@ -51,6 +54,7 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Social Links */}
           <div className="flex flex-col items-center md:items-end">
             <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
               <li>
@@ -71,18 +75,19 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-      </div>
 
-      <div className="text-center mt-16">
-        <h1
-          className="text-6xl sm:text-8xl md:text-9xl font-extrabold text-white tracking-wide inline-block"
-          style={{
-            maskImage: "linear-gradient(to top, white, transparent)",
-            WebkitMaskImage: "linear-gradient(to top, white, transparent)",
-          }}
-        >
-          HomeServify
-        </h1>
+        {/* Gradient Text Logo */}
+        <div className="text-center mt-16 w-full">
+          <h1
+            className="text-5xl sm:text-7xl md:text-8xl font-extrabold text-white tracking-wide inline-block"
+            style={{
+              maskImage: "linear-gradient(to top, white, transparent)",
+              WebkitMaskImage: "linear-gradient(to top, white, transparent)",
+            }}
+          >
+            HomeServify
+          </h1>
+        </div>
       </div>
     </footer>
   );

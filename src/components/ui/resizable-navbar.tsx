@@ -175,7 +175,7 @@ export const MobileNavHeader = ({
   return (
     <div
       className={cn(
-        "flex w-full flex-row items-center justify-between",
+        "flex w-full px-5 flex-row items-center justify-between",
         className,
       )}
     >

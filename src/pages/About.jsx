@@ -1,5 +1,6 @@
 import React from "react";
-import {Container, HorizontalScrollSection} from "../components/index";
+import {Container, HorizontalScrollSection, Logo} from "../components/index";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const About = () => {
   const imageData = [
@@ -64,6 +65,8 @@ const About = () => {
       alt: "Jaipur",
     },
   ];
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const panels = imageData.map((item, index) => (
     <div key={index} className="relative rounded-lg shadow-lg">
@@ -78,9 +81,19 @@ const About = () => {
     </div>
   ));
   return (
-    <section id="about" className="relative mt-5">
+    <section id="about" className="relative  mt-5 mb-10">
       <Container>
-        {/* Header */}
+        {location.pathname === "/about" && (
+          <div className="flex  items-center py-8 justify-between ">
+            <p
+              onClick={() => navigate("/")}
+              className="text-[1.1rem] hover:cursor-pointer"
+            >
+              <i className="ri-arrow-left-line"></i> Back
+            </p>
+            <Logo />
+          </div>
+        )}
         <div className="flex flex-col md:flex-row md:justify-between gap-6 md:gap-10 mb-8 px-4 sm:px-6 md:px-0 items-center">
           <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold">
             <p>We are Serving</p>
@@ -98,11 +111,10 @@ const About = () => {
           </div>
         </div>
 
-       
         <HorizontalScrollSection
           panels={panels}
-          autoSpeed={0.5} 
-          pinAt={0} 
+          autoSpeed={0.5}
+          pinAt={0}
           className="py-10"
         />
       </Container>

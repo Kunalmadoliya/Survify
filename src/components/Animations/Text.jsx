@@ -31,7 +31,7 @@ const Text = ({ className }) => {
 
   return (
     <div
-      className={`grid  h-[80px] bg-blue-600 overflow-hidden ${className}`}
+      className={`grid items-center justify-start sm:justify-center lg:justify-start h-[80px] bg-blue-600 overflow-hidden ${className}`}
     >
       <AnimatePresence mode="wait">
         <motion.div
