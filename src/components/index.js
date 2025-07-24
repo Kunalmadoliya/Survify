@@ -20,6 +20,7 @@ import ScrollScaleReveal from "./Animations/ScrollScaleReveal";
 import AnimatedCardStack from "./Animations/AnimatedCardStack";
 import {DraggableCardContainer} from "./ui/draggable-card";
 import Testimonials from "../pages/Testimonials";
+import Preloader from "./Preloader";
 
 
 export {
@@ -45,5 +46,6 @@ export {
   AnimatedCardStack,
   DraggableCardContainer,
   Testimonials,
+  Preloader
 
 };

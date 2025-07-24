@@ -7,7 +7,7 @@ import "../styles/temp.css";
 
 const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const companyNames = ["Home Survify", "Home Survify"];
+  const companyNames = ["Home Servify", "Home Servify"];
 
   return (
     <>

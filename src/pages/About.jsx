@@ -91,7 +91,7 @@ const About = () => {
 
           <div className="max-w-lg text-sm sm:text-base md:text-md text-gray-600 leading-relaxed">
             <p>
-              HomeSurvify ensures the security and monitoring of your property
+              HomeServify ensures the security and monitoring of your property
               with reliable, smart, and modern solutions. Wherever you are, we
               make your home safer and smarter.
             </p>

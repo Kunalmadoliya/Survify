@@ -6,9 +6,9 @@ const Footer = () => {
       <div className="flex justify-center items-center">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left w-full max-w-6xl">
           <div>
-            <h1 className="text-2xl font-bold">HomeSurvify</h1>
+            <h1 className="text-2xl font-bold">HomeServify</h1>
             <p className="text-gray-400 mt-2 text-sm sm:text-base">
-              Copyright © 2025 HomeSurvify
+              Copyright © 2025 HomeServify
               <br />
               All rights reserved
             </p>
@@ -81,7 +81,7 @@ const Footer = () => {
             WebkitMaskImage: "linear-gradient(to top, white, transparent)",
           }}
         >
-          HomeSurvify
+          HomeServify
         </h1>
       </div>
     </footer>
