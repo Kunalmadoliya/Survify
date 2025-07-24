@@ -1,6 +1,6 @@
 import React, {useRef} from "react";
 import {motion, useScroll, useTransform} from "framer-motion";
-import {clock , transport , verfied} from "../index"
+
 
 const AnimatedCardStack = () => {
   const ref = useRef(null);
@@ -9,17 +9,17 @@ const AnimatedCardStack = () => {
     offset: ["start end", "center center"],
   });
 
-  // Left card
+
   const card1X = useTransform(scrollYProgress, [0, 1], [0, -320]);
   const card1Rotate = useTransform(scrollYProgress, [0, 1], [0, -2]);
   const card1Scale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
 
-  // Middle card
+
   const card2X = useTransform(scrollYProgress, [0, 1], [0, 0]);
   const card2Rotate = useTransform(scrollYProgress, [0, 1], [0, 0]);
   const card2Scale = useTransform(scrollYProgress, [0, 1], [1, 1]);
 
-  // Right card
+
   const card3X = useTransform(scrollYProgress, [0, 1], [0, 320]);
   const card3Rotate = useTransform(scrollYProgress, [0, 1], [0, 2]);
   const card3Scale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
@@ -30,7 +30,7 @@ const AnimatedCardStack = () => {
       className="relative h-[450px] w-full flex items-center justify-center overflow-hidden"
     >
       <div className="relative w-[800px] h-[400px] flex justify-center items-center">
-        {/* Left Card */}
+       
         <motion.div
           style={{x: card1X, rotate: card1Rotate, scale: card1Scale}}
           className="relative bg-black h-[400px] w-[380px] rounded-3xl shadow-2xl flex"
@@ -47,7 +47,7 @@ const AnimatedCardStack = () => {
               </p>
             </div>
             <img
-              src={clock}
+              src="/assets/clock.png"
               alt="Icon"
               className="w-70 h-70 right-10 absolute -bottom-22  "
             />
@@ -60,7 +60,7 @@ const AnimatedCardStack = () => {
         >
           <div className="">
             <img
-              src={verfied}
+              src="/assets/verfied.png"
               alt="Middle"
               className="w-70 h-70 absolute -top-10 -rotate-3 object-contain"
             />
@@ -92,7 +92,7 @@ const AnimatedCardStack = () => {
               </p>
             </div>
             <img
-              src={transport}
+              src="/assets/transport.png"
               alt="Icon"
               className="w-70 h-70 self-end absolute -bottom-10  "
             />

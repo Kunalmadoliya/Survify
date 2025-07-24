@@ -20,9 +20,7 @@ import ScrollScaleReveal from "./Animations/ScrollScaleReveal";
 import AnimatedCardStack from "./Animations/AnimatedCardStack";
 import {DraggableCardContainer} from "./ui/draggable-card";
 import Testimonials from "../pages/Testimonials";
-import clock from "../../public/assets/clock.png";
-import transport from "../../public/assets/transport.png";
-import verfied from "../../public/assets/verfied.png";
+
 
 export {
   Header,
@@ -47,7 +45,5 @@ export {
   AnimatedCardStack,
   DraggableCardContainer,
   Testimonials,
-  clock,
-  transport,
-  verfied,
+
 };
