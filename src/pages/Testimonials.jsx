@@ -75,7 +75,7 @@ const Testimonials = () => {
   return (
     <>
       <Container>
-        <div className=" bg-blue-600 mb-10 rounded-lg">
+        <div className=" bg-blue-600 mb-10  mt-5 rounded-lg">
           <div className="py-16">
             <h1 className="text-center text-6xl  font-extrabold text-neutral-800 dark:text-white">
               Here's What Our{" "}
@@ -84,11 +84,6 @@ const Testimonials = () => {
               </span>{" "}
               Say
             </h1>
-            <h1 className="text-center text-2xl  font-extrabold text-neutral-800 dark:text-white mb-10">
-              Or we call it wall of 
-             
-            </h1>
-          
 
             <DraggableCardContainer className="relative flex h-[600px] w-full items-center justify-center overflow-clip rounded-md">
               <p className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-3xl font-black text-white md:text-4xl dark:text-white">

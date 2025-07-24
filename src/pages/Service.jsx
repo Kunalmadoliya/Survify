@@ -7,8 +7,8 @@ import React from "react";
 
 const Service = () => {
   return (
-    <section id="service" className="min-h-screen py-10 ">
-      <Container>
+    <section id="service" className="py-10 ">
+      <Container >
         <ScrollScaleReveal>
           <div className="flex flex-col p-10 font-bold text-center ">
             <h1 className="text-4xl text-gray-400">

@@ -78,7 +78,7 @@ const About = () => {
     </div>
   ));
   return (
-    <section id="about" className="relative">
+    <section id="about" className="relative mt-5">
       <Container>
         {/* Header */}
         <div className="flex flex-col md:flex-row md:justify-between gap-6 md:gap-10 mb-8 px-4 sm:px-6 md:px-0 items-center">

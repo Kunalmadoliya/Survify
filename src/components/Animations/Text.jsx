@@ -1,7 +1,7 @@
-import {motion, AnimatePresence} from "motion/react";
-import {useState, useEffect} from "react";
+import { motion, AnimatePresence } from "framer-motion"; // fixed the import path
+import { useState, useEffect } from "react";
 
-const Text = ({className}) => {
+const Text = ({ className }) => {
   const words = [
     "Cleaning.",
     "Repair.",
@@ -30,19 +30,21 @@ const Text = ({className}) => {
   }, []);
 
   return (
-    <div className={`overflow-hidden h-[80px] bg-blue-600  ${className}`}>
+    <div
+      className={`grid  h-[80px] bg-blue-600 overflow-hidden ${className}`}
+    >
       <AnimatePresence mode="wait">
         <motion.div
           key={words[current]}
-          initial={{y: "100%"}}
-          animate={{y: 0}}
-          exit={{y: "-120%"}}
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          exit={{ y: "-120%" }}
           transition={{
             type: "spring",
             damping: 30,
             stiffness: 400,
           }}
-          className="text-7xl font-bold text-white"
+          className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white"
         >
           {words[current]}
         </motion.div>
