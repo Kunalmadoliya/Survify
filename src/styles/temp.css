@@ -65,7 +65,6 @@
   }
 
   .hero-text-box {
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,12 +86,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 400px;
+    width: 300px;
   }
 
   .hero-search-input {
     flex: 1;
     height: 40px;
+    width: 90px;
   }
 
   .hero-search-button {

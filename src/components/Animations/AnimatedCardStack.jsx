@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import {motion, useScroll, useTransform} from "framer-motion";
+import {clock , transport , verfied} from "../index"
 
 const AnimatedCardStack = () => {
   const ref = useRef(null);
@@ -46,7 +47,7 @@ const AnimatedCardStack = () => {
               </p>
             </div>
             <img
-              src="../../../public/assets/24hours.png"
+              src={clock}
               alt="Icon"
               className="w-70 h-70 right-10 absolute -bottom-22  "
             />
@@ -59,7 +60,7 @@ const AnimatedCardStack = () => {
         >
           <div className="">
             <img
-              src="../../../public/assets/verified proff.png"
+              src={verfied}
               alt="Middle"
               className="w-70 h-70 absolute -top-10 -rotate-3 object-contain"
             />
@@ -91,7 +92,7 @@ const AnimatedCardStack = () => {
               </p>
             </div>
             <img
-              src="../../../public/assets/transport.png"
+              src={transport}
               alt="Icon"
               className="w-70 h-70 self-end absolute -bottom-10  "
             />

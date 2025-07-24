@@ -36,13 +36,13 @@ export const ScrollVelocity = ({
   scrollContainerRef,
   texts = [],
   velocity = 100,
-  className = "",
+  className = "text-xl sm:text-2xl md:text-4xl font-bold whitespace-nowrap px-4",
   damping = 50,
   stiffness = 400,
   numCopies = 6,
   velocityMapping = {input: [0, 1000], output: [0, 5]},
-  parallaxClassName = "",
-  scrollerClassName = "",
+  parallaxClassName = "w-full",
+  scrollerClassName = "gap-6",
   parallaxStyle,
   scrollerStyle,
 }) => {
@@ -110,7 +110,7 @@ export const ScrollVelocity = ({
   }
 
   return (
-    <section>
+    <section className="w-full">
       {texts.map((text, index) => (
         <VelocityText
           key={index}
