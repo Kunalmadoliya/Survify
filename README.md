@@ -1,36 +1,29 @@
-# 🧠 Survify
+# 🛠️ HomeSurvify – Smart Home Service Booking Platform
 
-A modern survey and booking platform built with **React**, **Redux**, and **Appwrite** — designed for scalability, speed, and simplicity.
+**HomeSurvify** is a modern, scalable web app inspired by **Urban Company**, designed to help users book verified professionals for home services like cleaning, repairs, and more.
 
-![Screenshot](https://your-screenshot-link-here)
-
----
-
-## 🚀 Features
-
-- 🔐 Authentication via Appwrite
-- 📋 Booking and Survey Form Handling
-- 🧾 Profile Management
-- 🗂 Dynamic Occupation Database
-- 🎨 Tailwind CSS for sleek UI
-- 🌍 Backend handled via Node.js
+Built with a focus on performance, structure, and beautiful UI animations. 💫
 
 ---
 
-## ⚙️ Tech Stack
-
-| Frontend       | Backend        | Dev Tools           |
-|----------------|----------------|---------------------|
-| React          | Node.js        | Vite                |
-| Redux Toolkit  | Express (if used) | Git & GitHub     |
-| Tailwind CSS   | Appwrite SDK   | VS Code             |
+## 🚀 Live Demo
+👉 [CLICK HERE](https://homesurvify.netlify.app/) 
 
 ---
 
-## 🛠 Setup Instructions
+## 🧰 Tech Stack
 
-```bash
-git clone https://github.com/Kunalmadoliya/Survify.git
-cd Survify
-npm install
-npm run dev
+- ⚛️ **React** – component-based UI
+- 🔁 **Redux Toolkit** – for managing global app state
+- 🔐 **Appwrite** – user authentication & cloud database
+- 🌐 **React Router v6** – smooth page navigation
+- 🎞 **Framer Motion** – animations and motion effects
+- 🎨 **Tailwind CSS** – responsive styling
+
+
+---
+
+## 🧩 Project Highlights
+
+### ✅ Clean & Scalable File Structure
+
