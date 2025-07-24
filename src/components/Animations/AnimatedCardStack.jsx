@@ -47,7 +47,7 @@ const AnimatedCardStack = () => {
               </p>
             </div>
             <img
-              src="/assets/clock.png"
+              src="/public/assets/clock.png"
               alt="Icon"
               className="w-70 h-70 right-10 absolute -bottom-22  "
             />
@@ -60,7 +60,7 @@ const AnimatedCardStack = () => {
         >
           <div className="">
             <img
-              src="/assets/verfied.png"
+              src="/public/assets/verfied.png"
               alt="Middle"
               className="w-70 h-70 absolute -top-10 -rotate-3 object-contain"
             />
@@ -92,7 +92,7 @@ const AnimatedCardStack = () => {
               </p>
             </div>
             <img
-              src="/assets/transport.png"
+              src="/public/assets/transport.png"
               alt="Icon"
               className="w-70 h-70 self-end absolute -bottom-10  "
             />
