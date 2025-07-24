@@ -86,7 +86,7 @@ const About = () => {
         {location.pathname === "/about" && (
           <div className="flex  items-center py-8 justify-between ">
             <p
-              onClick={() => navigate("/")}
+              onClick={() => navigate(-1)}
               className="text-[1.1rem] hover:cursor-pointer"
             >
               <i className="ri-arrow-left-line"></i> Back
