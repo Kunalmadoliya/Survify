@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import Stepper from "awesome-react-stepper";
 import { Input, Button } from "./index";
-import authService from "../appwrite/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { login } from "../store/actions/authSlice";
 import { Hoverbutton } from "../components/index";
+import authSer from "../services/authSer";
 
 const Signup = ({ onToggle }) => {
   const navigate = useNavigate();
@@ -36,7 +36,6 @@ const Signup = ({ onToggle }) => {
     watch,
   } = useForm();
 
-  // Register hidden fields
   useEffect(() => {
     register("role");
     register("service");
@@ -45,26 +44,23 @@ const Signup = ({ onToggle }) => {
   const create = async (data) => {
     setError("");
 
-    // Validate role selection
     if (!selectedRole) {
       setError("Please select a role (Customer or Provider).");
       return;
     }
 
-    // Validate service if provider
     if (selectedRole === "provider" && !selectedService) {
       setError("Please select a service category.");
       return;
     }
 
-    // Inject selected values into form data
     setValue("role", selectedRole);
     setValue("service", selectedService);
 
     try {
-      const userData = await authService.createAccount(data);
+     const userData = await authSer.signup(data);
       if (userData) {
-        const currentUser = await authService.getCurrentUser();
+        const currentUser = await authSer.getCurrentUser(); 
         dispatch(login(currentUser));
         navigate("/");
       }
@@ -186,6 +182,7 @@ const Signup = ({ onToggle }) => {
             icon={<i className="ri-lock-2-line text-black text-xl"></i>}
             type="password"
             placeholder="Password"
+            autoComplete="new-password"
             {...register("password", { required: "Password is required" })}
           />
           {errors.password && (
@@ -196,6 +193,7 @@ const Signup = ({ onToggle }) => {
             icon={<i className="ri-lock-password-line text-black text-xl"></i>}
             type="password"
             placeholder="Confirm Password"
+            autoComplete="new-password"
             {...register("confirmPassword", {
               required: "Confirm password is required",
               validate: (value) =>

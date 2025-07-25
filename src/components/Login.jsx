@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { login as authLogin } from "../store/actions/authSlice";
-import authService from "../appwrite/auth";
+import authSer from "../services/authSer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
@@ -19,32 +19,25 @@ const Login = ({ onToggle }) => {
   } = useForm();
 
   const login = async (data) => {
-  setError("");
-  try {
-    console.log("Attempting login...");
-    const session = await authService.login(data);
-    console.log("Session created:", session);
+    setError("");
+    try {
+      const session = await authSer.login(data);
+      const userData = await authSer.getCurrentUser();
 
-    const userData = await authService.getCurrentUser();
-    console.log("User data:", userData);
-
-    if (userData) {
-      dispatch(authLogin({ userData }));
-      navigate("/");
+      if (userData) {
+        dispatch(authLogin(userData)); // only userData, not wrapped in object
+        navigate("/");
+      }
+    } catch (error) {
+      setError(error.response?.data?.message || "Something went wrong");
     }
-  } catch (error) {
-    console.error("Login error:", error);
-    setError(error.message || "Something went wrong");
-  }
-};
-
+  };
 
   return (
     <form
       onSubmit={handleSubmit(login)}
       className="border p-10 sm:p-10 rounded-md space-y-5"
     >
-      {/* Toggle Buttons */}
       <div className="flex border rounded-md overflow-hidden hover:cursor-pointer">
         <button
           type="button"
@@ -106,7 +99,7 @@ const Login = ({ onToggle }) => {
         {isSubmitting ? (
           <i className="ri-loader-4-line animate-spin text-1xl"></i>
         ) : (
-          "Login" // ✅ Fixed label
+          "Login"
         )}
       </Hoverbutton>
     </form>
