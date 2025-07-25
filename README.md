@@ -1,13 +1,13 @@
-# 🛠️ HomeSurvify – Smart Home Service Booking Platform
+# 🛠️ HomeServify – Smart Home Service Booking Platform
 
-**HomeSurvify** is a modern, scalable web app inspired by **Urban Company**, designed to help users book verified professionals for home services like cleaning, repairs, and more.
+**HomeServify** is a modern, scalable web app  designed to help users book verified professionals for home services like cleaning, repairs, and more.
 
 Built with a focus on performance, structure, and beautiful UI animations. 💫
 
 ---
 
 ## 🚀 Live Demo
-👉 [CLICK HERE](https://homesurvify.netlify.app/) 
+👉 [CLICK HERE]((https://homeservify.netlify.app/)) 
 
 ---
 
